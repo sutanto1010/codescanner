@@ -1,0 +1,47 @@
+// @ts-nocheck
+import { register } from 'register-service-worker'
+
+if (process.env.NODE_ENV === 'production' || true) {
+  register(`${process.env.BASE_URL}service-worker.js`, {
+    ready () {
+      console.log(
+        'App is being served from cache by a service worker.\n' +
+        'For more details, visit https://goo.gl/AFskqB'
+      )
+    },
+    registered (registration) {
+      console.log('Service worker has been registered.')
+      setInterval(() => {
+        registration.update();
+      }, 1000 * 60);
+    },
+    cached () {
+      console.log('Content has been cached for offline use.')
+    },
+    updatefound () {
+      console.log('New content is downloading.')
+    },
+    updated (registration) {
+      /*
+      document.dispatchEvent(
+        new CustomEvent('swUpdated', { detail: registration })
+      );
+       */
+      //Just give user the latest version
+      registration.waiting.postMessage({action: "skipWaiting"})
+    },
+    offline () {
+      console.log('No internet connection found. App is running in offline mode.')
+    },
+    error (error) {
+      console.error('Error during service worker registration:', error)
+    }
+  })
+
+  let refreshing
+  navigator.serviceWorker.addEventListener("controllerchange", e=>{
+    if (refreshing) return
+    window.location.reload()
+    refreshing = true
+  })
+}

@@ -1,0 +1,57 @@
+version: '3'
+services:
+  db:
+    image: postgres:14.1
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      POSTGRES_PASSWORD: P@ssw0rd
+      POSTGRES_DB: code_scanner
+  nats:
+    image: nats:latest
+    restart: always
+    ports:
+      - 4222:4222
+  web:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.web
+    image: codescanner_web
+    ports:
+      - 8080:80
+  api:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.api
+    image: codescanner_api
+    environment:
+      NATS_URL: nats://nats:4222
+      NATS_USER: 
+      NATS_PASS: 
+      DB_TYPE: postgres
+      DB_CONNECTION: host=db port=5432 user=postgres dbname=code_scanner sslmode=disable password=P@ssw0rd
+    ports:
+      - 8081:3000
+    depends_on:
+      - db
+      - nats
+  scanner:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.scanner
+    image: codescanner_scanner
+    environment:
+      MAX_CONCURRENT_SCAN: 5
+      SCANNER_WORKING_DIR: /scanner-working-dir
+      NATS_URL: nats://nats:4222
+      NATS_USER: 
+      NATS_PASS: 
+      DB_TYPE: postgres
+      DB_CONNECTION: host=db port=5432 user=postgres dbname=code_scanner sslmode=disable password=P@ssw0rd
+    depends_on:
+      - db
+      - nats
+      - api

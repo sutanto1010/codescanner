@@ -1,0 +1,9 @@
+{
+    "DB_TYPE": "postgres",
+    "DB_CONNECTION": "host=localhost user=postgres dbname=code_scanner sslmode=disable password=P@ssw0rd",
+    "NATS_URL": "localhost",
+    "NATS_USER": "",
+    "NATS_PASS": "",
+    "MAX_CONCURRENT_SCAN": 5,
+    "SCANNER_WORKING_DIR": "C:/Temp/scanner"
+}

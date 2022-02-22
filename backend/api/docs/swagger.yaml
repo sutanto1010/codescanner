@@ -1,0 +1,54 @@
+basePath: /
+definitions:
+  main.Response:
+    properties:
+      Data: {}
+      Message:
+        type: string
+      Success:
+        type: boolean
+      Total:
+        type: integer
+    type: object
+host: localhost:3000
+info:
+  contact: {}
+  description: Help you to deliver better software
+  termsOfService: http://twitter.com/sutanto1010/
+  title: Code Scanner API
+  version: "1.0"
+paths:
+  /crud/{table}/v1:
+    get:
+      consumes:
+      - application/json
+      description: This is generic CRUD endpoint, can be use to do CRUD for existing
+        table or future table
+      parameters:
+      - description: Table name
+        in: path
+        name: table
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Response'
+      summary: Generic CRUD
+  /request-to-scan/v1:
+    post:
+      consumes:
+      - application/json
+      description: Use this endpoint to make scan request
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/main.Response'
+      summary: Request to scan
+swagger: "2.0"

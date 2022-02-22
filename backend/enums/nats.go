@@ -1,0 +1,5 @@
+package enums
+
+const (
+	NATS_TOPIC_SCAN_REQUEST = "NATS_TOPIC_SCAN_REQUEST"
+)

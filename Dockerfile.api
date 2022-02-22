@@ -1,0 +1,7 @@
+FROM golang:latest
+WORKDIR $APP_HOME
+USER $APP_USER
+COPY bin/api .
+EXPOSE 3000
+USER $APP_USER
+CMD ["./api"]

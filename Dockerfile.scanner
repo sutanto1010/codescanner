@@ -1,0 +1,8 @@
+FROM golang:latest
+RUN apt-get update && \
+apt-get install -y build-essential && \
+apt-get install -y software-properties-common && \
+apt-get install -y git
+COPY bin/scanner .
+RUN mkdir /scanner-working-dir
+CMD ["./scanner"]

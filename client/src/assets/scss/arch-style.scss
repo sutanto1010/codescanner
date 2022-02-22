@@ -1,0 +1,79 @@
+.arch-text-as-is{
+  text-transform: none !important;
+}
+.pointer{
+  cursor: pointer !important;
+}
+
+.arch-cbx-small .v-messages{
+  display: none !important;
+}
+.arch-cbx-small{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.arch-code{
+  font-family: "Courier New" !important;
+  padding: 8px;
+  background: #f1ebeb;
+  border-radius: 4px;
+  font-weight: bolder;
+  border: dashed 1px #b1acac;
+  text-align: center;
+  margin: 0 !important;
+
+  &.code--primary {
+    background-color: #dcf5ef;
+    color: #67af9e;
+    border-color: #67af9e;
+  }
+  &.code--secondary {
+    background-color: rgba(239, 239, 239, 1);
+    color: rgba(181, 181, 181, 1);
+    border-color: rgba(181, 181, 181, 1);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}
+
+.arch-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+@for $i from 1 through 6 {
+  .arch-max-row-#{$i} {
+    -webkit-line-clamp: $i;
+  }
+}
+
+.arch-no-transition {
+  transition: none;
+}
+.display-0,
+.display-false{
+  display: none !important;
+}
+.display-1,
+.display-true{
+  display: inherit !important;
+}
