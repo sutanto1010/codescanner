@@ -4,10 +4,6 @@
       <div class="display-1">
         <v-icon size="25" color="primary">{{ icon }}</v-icon> {{ title }}
       </div>
-      <v-spacer></v-spacer>
-      <v-btn color="primary" dark text @click="New()">
-        <v-icon>mdi-plus</v-icon> New
-      </v-btn>
     </div>
     <v-card>
       <v-card-text>
