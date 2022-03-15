@@ -125,3 +125,5 @@ CREATE VIEW public.vw_scan AS
 
 
 ALTER TABLE public.vw_scan OWNER TO postgres;
+INSERT INTO public."rule" (id,code,"name",description,created,created_by,"enable",severity,pattern) VALUES
+	 ('eb65ca3f-1db3-4b2d-bb49-541786be6742',NULL,'SECRET_KEY',NULL,'2022-03-11 00:34:22.500792+07',NULL,NULL,'High','(public_key|private_key)');
