@@ -8,12 +8,12 @@ export default {
       link: '/repositories',
     },
     {
-      icon: 'mdi-target',
+      icon: 'mdi-broadcast',
       text: 'Scans',
       link: '/scans',
     },
     {
-      icon: 'mdi-spider',
+      icon: 'mdi-ladybug',
       text: 'Findings',
       link: '/findings'
     }

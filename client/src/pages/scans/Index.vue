@@ -19,7 +19,7 @@
           :server-side="true"
         >
           <template v-slot:[`item.row_icon`]="{}">
-            <v-icon color="#E84D31" small>mdi-target</v-icon>
+            <v-icon color="#E84D31" small>mdi-broadcast</v-icon>
           </template>
           <template v-slot:[`item.url`]="{ item }">
             <a :href="item.url" target="_blank">{{ item.url }}</a>
@@ -42,7 +42,7 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 @Component
 export default class Index extends Vue {
   title: string = "Scans";
-  icon: string = "mdi-target";
+  icon: string = "mdi-broadcast";
   ownerId: number = 0;
   $refs: any;
   item: any = null;

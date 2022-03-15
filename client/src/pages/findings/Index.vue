@@ -29,7 +29,7 @@
             </td>
           </template>
           <template v-slot:[`item.row_icon`]="{}">
-            <v-icon color="#E84D31" small>mdi-spider</v-icon>
+            <v-icon color="#E84D31" small>mdi-ladybug</v-icon>
           </template>
           <template v-slot:[`item.url`]="{ item }">
             <a :href="item.url" target="_blank">{{ item.url }}</a>
@@ -52,7 +52,7 @@ import { Component, Vue, Watch } from "vue-property-decorator";
 @Component
 export default class Index extends Vue {
   title: string = "Findings";
-  icon: string = "mdi-spider";
+  icon: string = "mdi-ladybug";
   ownerId: number = 0;
   $refs: any;
   item: any = null;
